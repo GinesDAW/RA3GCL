@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+       <meta charset="UTF-8">
+        <title>Tarea RA3 DWEC</title>
+        
+
+</head>
+<body>
+    <h1>ESTE ES EL EJERCICIO 1</h1>
+    <h2 id="fecha"></h2>
+    <script type="text/javascript">
+        /*Definimos las constantes principales con el objeto Date()
+        En estos ejercicios, vamos a hacer el script directamente en el html, por una cuestion de
+        legibilidad a la hora de realizar la tarea, siguiendo el ejemplo del material del Aula Virtual*/
+         const date = new Date(); //Creamos el objeto Date()
+         const hoy = date.getDate(); //Obtenemos el numero de dia actual
+         const mes= date.getMonth()+1;//Obtenemos el mes actual. Como va de 0 a 11, hay que sumarle 1 (como si hicieramos un array con los meses del año)
+         const anio = date.getFullYear();//Obtenemos el año actual
+         const finAnio = new Date(anio, 11,31); //Con el mes actual como referencia, utilizamos parámetros concretos para setear el ultimo dia del año
+         
+         //Hacemos las operaciones para ver cuantos dias quedan para fin de año
+         const diferencia = Math.ceil((finAnio-date)/(24*60*60*1000)); //Segun la documentacion, devuelve los milisegundos, por lo que hay que hacer una conversion. Math.ceil, devuelve el siguiente entero, por si estamos a mitad del dia
+
+         document.getElementById("fecha").innerText = `Hoy es ${hoy}/${mes}/${anio} y faltan ${diferencia} días para fin de año`;   
+    </script>
+</body>
+</html>

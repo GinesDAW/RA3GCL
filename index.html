@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+       <meta charset="UTF-8">
+        <title>Tarea RA3 DWEC</title>
+        <script type="text/javascript">
+            const inicializar =()=>{
+                document.getElementById("crear-ventana").onclick=crearNueva;
+                document.getElementById("cerrar-ventana").onclick=cerrarNueva;
+            }
+
+            let nuevaVentana;
+
+            const crearNueva =()=>{
+                nuevaVentana = window.open("ejercicio1.html","","height=600,width=400");
+
+            }
+
+            const cerrarNueva =()=>{
+                if(nuevaVentana){
+                    nuevaVentana.close();nuevaVentana=null;
+                }
+            }
+        </script>
+
+</head>
+<body onload="inicializar()">
+    <h1> Abrimos y cerramos ventanas</h1>
+    <form>
+        <input type="button" id="crear-ventana" value="Crear Nueva Ventana">
+        <input type="button" id="cerrar-ventana" value="Cerrar Nueva Ventana">
+        
+    </form>
+</body>
+</html>
