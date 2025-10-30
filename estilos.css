@@ -1,0 +1,114 @@
+/*Estilo general del body*/
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+    margin: 20px;
+}
+
+/*Estilo del encabezado y footer*/
+header {
+    display: flex;
+    background-color: #3a505a;
+    color: white;
+    padding: 15px;
+    justify-content: space-between
+}
+
+footer {
+    display: flex;
+    justify-content: center;      
+    align-items: center;          
+    background-color: #3a505a;
+    color: white;
+    padding: 20px;               
+    margin-top: 15px;
+    text-align: center;
+}
+footer img {
+    width: 24px;
+    height: 24px;
+    margin-left: 15px;
+}
+
+
+/*Secciones y párrafos concretos*/
+section {
+    background-color: white;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+section h1 {
+    color: #2c3e50;
+}
+
+section h2 {
+    color: #555;
+}
+
+/*Formularios y lo que hay dentro*/
+form {
+    margin-bottom: 10px;
+}
+
+input[type="text"],
+input[type="number"] {
+    padding: 5px;
+    border: 1px solid #ccc;
+}
+
+button[type="submit"],#crear-ventana,#cerrar-ventana, input[type="submit"] {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 15px 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-family: inherit;
+    margin: 5px;
+
+}
+
+button[type="submit"], #crear-ventana,#cerrar-ventana,input[type="submit"]:hover {
+    background-color: #2980b9;
+    transform: scale(1.05);    
+    
+
+}
+
+/* Estilos de los divs de resultados*/
+div[id^="compresion"], div[id="descompresion"], div[id="mostrar_contador"], div[id="fecha"]{
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #eee;
+}
+
+/*Estilo de los botones*/
+.botones{
+     display: flex;           
+    justify-content: center; 
+    align-items: center;     
+    height: 100vh; 
+}
+a{
+    border: none;
+    box-shadow: none;
+    outline: none;
+    cursor: pointer;           
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #3a505a;
+    color: white;
+    padding: 15px 25px;
+    text-decoration: none;
+    font-family: inherit;
+    
+}
+
+a:hover {
+    background-color: #408bad; 
+    transform: scale(1.05);    
+}
+

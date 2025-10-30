@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Tarea RA3 DWEC</title>
+    <link rel="stylesheet" href="../estilos.css">
+
+</head>
+<body>
+    <header>
+        <h1><b>Desarrollo Web en Entorno Cliente</b>
+            <br>
+            <br>Tarea 3: 
+            <br>Jerarquía de objetos
+        </h1>
+    <img src="resources/images/logo_carlos_iii.png" alt="logo_carlos_iii">
+    </header>
+
+     <h1>Actividad 3</h1>
+<h2>Crea una pequeña interfaz con un botón que cada vez que el usuario hace click haya un contador en pantalla con el número de clicks acumulado.<br>
+Utiliza LocalStorage y el máximo entero seguro de JavaScript.</h2>
+
+    <form onsubmit="aumentarContador(event)">
+    <button type="submit" id="boton">Aumentar número</button>
+    </form>
+
+    <div id="mostrar_contador"></div>
+    <form onsubmit="reiniciarContador(event)">
+    <button type="submit" id="boton">Reiniciar Contador</button>
+    </form>
+    <div id="botones">
+            <a href="./ejercicio2.html">Anterior</a>
+            <a href="./ejercicio4.html">Siguiente</a>
+    </div>
+    <footer>
+        <span>Created by Ginés Conesa Liza</span>
+        <a href="https://github.com/GinesDAW/RA3GCL" target="_blank">Repositorio de la tarea</a>
+        <span>CIFP Carlos III Cartagena</span>
+        <img src="resources/images/logo_carlos_iii.png" alt="logo_carlos_iii">
+    </footer>
+
+    <script>
+    /*Creamos un contador fuera de las funciones para poder llamarlo y que no se reinicie al terminar la funcion
+    concreta. En este caso, tendremos que modificar cómo lo declaramos, ya que usamos LocalStorage para
+    que el valor quede registrado aunque se recargue la pagina. */
+    let contador= localStorage.getItem("contador");
+    if (contador){
+       contador = parseInt(localStorage.getItem("contador")); //Como localStorage devuelve una cadena, tenemos que pasarlo a un entero
+    }else{
+        contador =0; //Si no hay un contador previamente guardado, su valor inicial es 0
+    }
+
+    document.getElementById("mostrar_contador").innerHTML = contador;
+
+    function aumentarContador(event){
+        event.preventDefault();
+        if (contador < Number.MAX_SAFE_INTEGER){ //Si el contador es mas bajo que el numero seguro, podemos hacer click y el contador sube
+            contador++;
+            document.getElementById("mostrar_contador").innerText = `${contador}`;
+            localStorage.setItem("contador", contador);
+        } else {
+            alert("Ya no se pueden realizar más clicks"); //Si se llega al número, no deja aumentar el contador. 
+        }
+    }
+
+    function reiniciarContador(event){
+        localStorage.clear(); //Limpiamos la información guardada
+    }
+    </script>
+    
+</body>
+
+</html>

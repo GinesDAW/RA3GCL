@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Tarea RA3 DWEC</title>
+    <link rel="stylesheet" href="../estilos.css">
+
+</head>
+<body>
+    <header>
+        <h1><b>Desarrollo Web en Entorno Cliente</b>
+            <br>
+            <br>Tarea 3: 
+            <br>Jerarquía de objetos
+        </h1>
+    <img src="resources/images/logo_carlos_iii.png" alt="logo_carlos_iii">
+    </header>
+    <h1>Actividad 2</h1>
+    <h2>Vamos utilizar nuestros conocimientos de manipulación de cadenas en javascript, para crear un algoritmo de compresión de cadenas.<br>
+        El algoritmo consiste en sustituir rachas de caracteres repetidos por el número de repeticiones seguido del carácter.<br>
+        El algoritmo sólo actúa con cadenas de caracteres del alfabeto, por lo que arrojará un mensaje de error en caso de que la cadena contenga números. <br>
+        Si admite espacios, en cuyo caso se sustituirá el espacio por una interrogación "?".</h2>   
+
+
+    <form onsubmit="comprimirCadena(event)">
+        <label for="cadenaDescomprimida">Escribe tu texto a comprimir: </label>
+        <input type="text" id="cadenaDescomprimida" name="cadenaDescomprimida" required>
+        <input type="submit" value="Comprimir cadena">
+    </form>
+
+    <form onsubmit="descomprimirCadena(event)">
+        <label for="cadenaComprimida">Escribe tu texto a descomprimir: </label>
+        <input type="text" id="cadenaComprimida" name="cadenaComprimida" required>
+        <input type="submit" value="Descomprimir cadena">
+    </form>
+
+    <div id="compresion"></div>
+    <div id="descompresion"></div> 
+    <div id="botones">
+            <a href="../index.html">Anterior</a>
+            <a href="./ejercicio3.html">Siguiente</a>
+    </div>
+    <footer>
+        <span>Created by Ginés Conesa Liza</span>
+        <a href="https://github.com/GinesDAW/RA3GCL" target="_blank">Repositorio de la tarea</a>
+        <span>CIFP Carlos III Cartagena</span>
+        <img src="resources/images/logo_carlos_iii.png" alt="logo_carlos_iii">
+    </footer>
+    <script>
+        function comprimirCadena(event){
+            event.preventDefault();
+            //Obtenemo el valor de la cadena que hemos introducido
+
+            let textoAComprimir = document.getElementById("cadenaDescomprimida").value;
+
+            //Hacemos un primer reemplazo con replaceAll para cambiar todos los espacios por "?"
+            let textoSinEspacios = textoAComprimir.replaceAll(" ", "?");
+
+            //Creamos una variable vacía que luego podamos concatenar para crear la nueva
+            let textoComprimido = "";
+            let contador = 1; //Inicialziamos un contador para las letras que se repitan. Empieza en 1 ya que, aunque no se repitan, existen
+            
+            //Creamos un bucle que recorra la cadena
+            for (let i = 0; i < textoSinEspacios.length; i++){
+                let actual = textoSinEspacios[i]; //Observamos la letra actual
+                let siguiente = textoSinEspacios[i + 1]; //Observamos la letra siguiente
+                if (actual === siguiente){ //Si son iguales, el contador aumenta
+                    contador++;
+                } else {
+                    textoComprimido += (contador > 1 ? contador : "") + actual; //Concatenamos el numero de veces que se repite una letra y la letra que se repite
+                    contador = 1; //Reiniciamos el contador
+                }
+            }
+            document.getElementById("compresion").innerText = textoComprimido;
+        }
+
+        function descomprimirCadena(event){
+            event.preventDefault();
+            //Obtenemos el valor de la cadena. Aunque sea una string, tiene valores numericos de las repeticiones. 
+           let textoADescomprimir = document.getElementById("cadenaComprimida").value;
+            let textoDescomprimido = ""; //Almacenamos el resultado final
+            let numero = ""; //Acumulamos el número de repeticiones
+
+            //Recorremos la cadena comprimida
+            for (let i = 0; i < textoADescomprimir.length; i++){
+                let caracter = textoADescomprimir[i];
+                if (!isNaN(caracter) && caracter !== " "){ //Si es un número, lo acumulamos
+                    numero += caracter;
+                } else {
+                    //Si es un carácter, repetimos según el número acumulado.
+                    let repeticiones = numero ? parseInt(numero) : 1;
+                    textoDescomprimido += caracter.repeat(repeticiones);
+                    numero = ""; // Reiniciamos el acumulador de números
+                }
+            }
+
+            //Reemplazamos los "?" por espacios, al reves que en el apartado anterior
+            textoDescomprimido = textoDescomprimido.replaceAll("?", " ");
+
+            document.getElementById("descompresion").innerText = textoDescomprimido;
+        }
+    </script>
+</body>
+</html>

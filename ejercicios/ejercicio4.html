@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Tarea RA3 DWEC</title>
+    <link rel="stylesheet" href="../estilos.css">
+
+</head>
+<body>
+    <header>
+        <h1><b>Desarrollo Web en Entorno Cliente</b>
+            <br>
+            <br>Tarea 3: 
+            <br>Jerarquía de objetos
+        </h1>
+    <img src="resources/images/logo_carlos_iii.png" alt="logo_carlos_iii">
+    </header>
+    <h1>Actividad 4</h1>
+    <h2>Utiliza el método setTimeout para realizar una redirección de la página a otra que tu elijas, pasados 3 segundos desde la carga de la página.</h2>
+    <form onsubmit="accederAPagina(event)">
+        <h2>Ya que esto se deja a mi criterio, le dejo mi grupo de rock.</h2>
+        <button type="submit" id="boton">Click para reforzar mi ego</button>
+    </form>
+    <div id="botones">
+            <a href="./ejercicio3.html">Anterior</a>
+    </div>
+    <footer>
+        <span>Created by Ginés Conesa Liza</span>
+        <a href="https://github.com/GinesDAW/RA3GCL" target="_blank">Repositorio de la tarea</a>
+        <span>CIFP Carlos III Cartagena</span>
+        <img src="resources/images/logo_carlos_iii.png" alt="logo_carlos_iii">
+    </footer>
+    <script>
+        function accederAPagina(event) { //Creamos una función que será llamada con el evento. 
+        event.preventDefault();
+        setTimeout(() => {
+        window.open("https://www.youtube.com/watch?v=CcpCAPXl-Ls"); //Dentro de la función, usamos setTimeOut y, dentro, lo que queremos que se haga y el tiempo en milisegundos que va a tardar en hacerlo
+            }, 3000);
+        }
+    </script>
+</body>
+</html>

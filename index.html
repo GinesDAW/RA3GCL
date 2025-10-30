@@ -3,33 +3,59 @@
     <head>
        <meta charset="UTF-8">
         <title>Tarea RA3 DWEC</title>
+        <link rel="stylesheet" href="estilos.css">
         <script type="text/javascript">
-            const inicializar =()=>{
+            const inicializar =()=>{ //Inicializamos la pagina, cargando los valores de las funciones que se aplicarán al hacer click en los botones
                 document.getElementById("crear-ventana").onclick=crearNueva;
                 document.getElementById("cerrar-ventana").onclick=cerrarNueva;
             }
 
-            let nuevaVentana;
+            let nuevaVentana; 
 
-            const crearNueva =()=>{
-                nuevaVentana = window.open("ejercicio1.html","","height=600,width=400");
+            const crearNueva =()=>{ //Utilizamos window.open, con los parámetros seleccionados, para abrir una nueva ventana. 
+                nuevaVentana = window.open("./ejercicios/ejercicio1.html","","height=600,width=400"); 
 
             }
 
-            const cerrarNueva =()=>{
+            const cerrarNueva =()=>{ //Cerramos la ventana.
                 if(nuevaVentana){
-                    nuevaVentana.close();nuevaVentana=null;
+                    nuevaVentana.close();nuevaVentana=null;//Si se cierra la ventana, se elimina para poder volver a crearse. 
                 }
             }
         </script>
 
 </head>
-<body onload="inicializar()">
-    <h1> Abrimos y cerramos ventanas</h1>
+<header>
+        <h1><b>Desarrollo Web en Entorno Cliente</b>
+            <br>
+            <br>Tarea 3: 
+            <br>Jerarquía de objetos
+            
+        </h1>
+        <img src="ejercicios/resources/images/logo_carlos_iii.png" alt="logo_carlos_iii">
+    </header>
+    <!--Para la realizacion de esta tarea se ha seguido paso por paso el ejemplo de los recursos.
+    Es por ello que hemos tenido que utilizar una funcion onload, para que cargue el script al momento de
+    entrar a la pagina. Dentro de la misma, tendremos el resto de funciones.-->
+    <body onload="inicializar()">
+    <h1>Actividad 1</h1>
+    <h2>Crea la siguiente aplicación JavaScript: <br>Una página con un botón que al hacer click abre una ventana de tamaño 600 X 400. <br>
+        En la ventana se escribirá la frase: <br><br> 
+        "Hoy es dia/mes/año y faltan XX días para fin de año" <br><br>
+        Día, mes, y año, serán obtenidos a partir del objeto Date.</h2>
     <form>
         <input type="button" id="crear-ventana" value="Crear Nueva Ventana">
         <input type="button" id="cerrar-ventana" value="Cerrar Nueva Ventana">
         
     </form>
+      <div id="botones">
+            <a href="ejercicios/ejercicio2.html">Siguiente</a>
+    </div>
+    <footer>
+        <span>Created by Ginés Conesa Liza</span>
+        <a href="https://github.com/GinesDAW/RA3GCL" target="_blank">Repositorio de la tarea</a>
+        <span>CIFP Carlos III Cartagena</span>
+        <img src="ejercicios/resources/images/logo_carlos_iii.png" alt="logo_carlos_iii">
+    </footer>
 </body>
 </html>
